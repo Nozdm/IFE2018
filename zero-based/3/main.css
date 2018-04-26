@@ -1,0 +1,71 @@
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+html,body, .layout {
+  height: 100%;
+  font-size: 18px;
+}
+.layout {
+  display: flex;
+  justify-content: flex-start;
+
+}
+.left {
+  width: 380px;
+  background-color: rgb(57, 62, 117);
+  position: relative;
+}
+.right {
+  /*右边栏未设置宽度，内容撑开，
+  剩余空间，总共为一份，全给右边栏,设置flex-grow: 1*/
+  flex-grow: 1;
+  background-color: rgb(0, 52, 110);
+}
+.left .intro {
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  line-height: 40px;
+}
+.left .intro img {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  display: block;
+  margin: 0 auto;
+}
+.left blockquote {
+  position: absolute;
+  bottom: 20px;
+  height: 140px;
+  margin: 0 12px;
+}
+.left blockquote span {
+  position: absolute;
+  right: 10px;
+  margin-top: 26px;
+}
+
+.right {
+  padding: 40px 40px ;
+}
+.right h2 {
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  color: green;
+}
+.right ul {
+  margin: 20px;
+  padding: 20px;
+}
+.right ul li {
+  margin: 20px;
+  font-size: 24px;
+}
