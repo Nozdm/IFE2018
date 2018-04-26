@@ -30,8 +30,8 @@ html,body, .layout {
   left: 50%;
   top: 45%;
   transform: translate(-50%, -50%);
-  font-size: 20px;
-  line-height: 40px;
+  font-size: 18px;
+  line-height: 24px;
 }
 .left .intro img {
   width: 120px;
@@ -39,6 +39,8 @@ html,body, .layout {
   border-radius: 60px;
   display: block;
   margin: 0 auto;
+  margin-bottom: 40px;
+
 }
 .left blockquote {
   position: absolute;
