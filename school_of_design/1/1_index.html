@@ -15,6 +15,9 @@
     a {
       position: relative;
       text-decoration: none;
+      -webkit-transition: color 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      -moz-transition: color 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      -o-transition: color 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transition: color 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .target {
@@ -29,7 +32,16 @@
       width: 0%;
       position: absolute;
       bottom: -2px;
+      /*浏览器厂商前缀，兼容*/
+      -webkit-transform: translate(-50%,0);
+      -moz-transform: translate(-50%,0);
+      -ms-transform: translate(-50%,0);
+      -o-transform: translate(-50%,0);
       transform: translate(-50%,0);
+      -webkit-transition: width 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      -moz-transition: width 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      -o-transition: width 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
       transition: width 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .line { 
