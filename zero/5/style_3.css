@@ -1,0 +1,66 @@
+/*reset*/
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+ul {
+  list-style-type: none;
+}
+/*common*/
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+ul > li {
+  float: left;
+  margin-right: 20px;
+}
+ul li span {
+  font-weight: bold;
+  margin-right: 10px;
+}
+ul li strong {
+  font-weight: normal;
+}
+/*main*/
+.layout {
+  width:  90%;
+  border: 2px solid rgb(214, 214, 214);
+}
+header h1 {
+  background: rgb(133, 133, 133);
+  color: #fff;
+  padding: 20px;
+}
+main section {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border-bottom: 2px solid #ccc;
+}
+section h3 {
+  height: 60px;
+  float: left;
+  width: 100px;
+  margin: 0 auto;
+  background-color: rgb(214, 214, 214);
+  text-align: center;
+  /*垂直居中*/
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+section .intro{
+  padding-top: 20px;
+  padding-left: 120px;
+  position: relative;
+}
+
+/*剩下的还一个h5 一个p构成一行。。。*/
+/*最简单的方法就是。。。在html中添加类呀*/
+.intro h5
+ {
+  float: left;
+  padding-right: 20px; 
+}
+.intro p {
+  padding-left: 80px;
+}

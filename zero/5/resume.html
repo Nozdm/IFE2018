@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>简历</title>
+  <link rel="stylesheet" href="style_1.css">
+  <style>
+    button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <header><h1>简历</h1></header>
+    <main>
+      <section class="clearfix">
+        <h3>基本信息</h3>
+        <div class="intro">
+          <ul class="clearfix">
+              <li><span>姓名</span><strong>张三</strong></li>
+              <li><span>性别</span><strong>男</strong></li>
+              <li><span>应聘职位</span><strong>web前端工程师</strong></li>
+            </ul>
+        </div>
+      </section>
+      <section class="clearfix">
+        <h3>联系方式</h3>
+        <div class="intro">
+          <ul class="clearfix">
+              <li><span>手机</span><strong>12312341234</strong></li>
+              <li><span>Email</span><a href="#">joinefe@baidu.com</a></li>
+              <li><span>个人主页</span><a href="#">Github</a></li>
+          </ul>  
+        </div>
+ 
+      </section>
+      <section class="clearfix">
+        <h3>能力描述</h3>
+        <div class="intro">
+          <h5>技术能力</h5>
+          <p>熟练掌握HTML，CSS，JavaScript</p>
+          <h5>综合能力</h5>
+          <p>良好的沟通，主动积极，努力勤奋</p>
+        </div>
+      </section>
+      <section class="clearfix">
+        <h3>教育经历</h3>
+        <div class="intro">
+          <h5>本科</h5>
+          <p>百度前端技术学院小薇学院</p>
+          <h5>研究所</h5>
+          <p>百度前端技术学院大斌学院</p>
+        </div>
+
+      </section>
+      <section class="clearfix">
+        <h3>项目经历</h3>
+        <div class="intro">
+          <h5>小度小度</h5>
+          <p>作为前端工程师角色参与了ABC组件的开发</p>
+          <h5>SAN Doc</h5>
+          <p>作为文档工程师参与了SAN Doc编写</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <button>切换哦</button>
+</body>
+<script>
+  var index = 0;
+  var btn = document.querySelector('button');
+  var link = document.querySelector('link');
+
+  sty = ['style_1.css', 'style_2.css', 'style_3.css'];
+  btn.addEventListener('click', function(){
+    index = (++index)%3;
+    link.href = sty[index];
+    console.log(index, sty[index])
+    console.log(link.href);
+  });
+</script>
+</html>

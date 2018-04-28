@@ -1,0 +1,27 @@
+/*reset*/
+/*这里就用默认样式吧*/
+ul {
+  list-style-type: none;
+}
+/*common*/
+/*样式中公共的部分写在这里*/
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+ul > li {
+  float: left;
+  margin-right: 20px;
+}
+ul li span {
+  font-weight: bold;
+  margin-right: 10px;
+}
+ul li strong {
+  font-weight: normal;
+}
+/*main*/
+/*好像把公共的部分写完，就没啥写的了*/

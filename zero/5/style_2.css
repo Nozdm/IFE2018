@@ -1,0 +1,44 @@
+/*reset*/
+ul {
+  list-style-type: none;
+}
+/*common*/
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+ul > li {
+  float: left;
+  margin-right: 20px;
+}
+ul li span {
+  font-weight: bold;
+  margin-right: 10px;
+}
+ul li strong {
+  font-weight: normal;
+}
+/*main*/
+body, .layout {
+  margin: 0;
+  padding: 0;
+  height: 600px;
+}
+header h1{
+  float: left;
+  width: 100px;
+  height:600px;
+  color: #fff;
+  background-color: rgb(101, 165, 250);
+}
+h1 {
+  margin: 0 auto;
+  padding: 100px;
+}
+.layout main {
+  float: left;
+  padding: 0 30px;
+  transform: scale(0.9,0.9);
+}
