@@ -1,0 +1,144 @@
+
+/*common*/
+.layout {
+
+  width: 960px;
+  margin: 0 auto;
+}
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/*main*/
+html, body, .container {
+  height: 100%;
+  font-size: 20px
+}
+header {
+  height:80px;
+  background: rgb(51, 51, 51);
+}
+.header {
+  position: relative;
+  height: 100%;
+}
+.logo,li>a {
+  color: #fff;
+}
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(0%,-50%);
+
+}
+.header ul {
+  float: right;
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+.header ul > li {
+  display: inline-block;
+}
+.banner {
+  height: 300px;
+  background: rgb(102, 187, 51);
+}
+.banner .bar {
+  height: 100%;
+  position: relative;
+}
+.banner .bar ul {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.bar ul li {
+  width: 20px;
+  padding: 5px 0;
+  background: rgb(178, 221, 153);
+  display: inline-block;
+  text-align: center;
+  vertical-align: bottom;
+  margin-bottom: 6px;
+}
+.bar ul li.active {
+  padding: 15px 0 5px 0;
+  background: #fff;
+}
+main {
+  height: 650px;
+}
+main nav {
+  height: 70px;
+  position: relative;
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+nav ul {
+  position: absolute;
+  /*这里设置-1px， 使ul整体下移*/
+  bottom: -1px;
+  left: 210px;
+  text-align: center;
+}
+nav ul>li {
+  float: left;
+  width: 120px;
+  padding: 10px 0;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 20px 20px 0 0;
+  background: rgb(238, 238, 238);
+}
+nav ul li.active {
+  position: relative;
+  background: #fff;
+  border-bottom: 1px solid #fff;
+}
+main .content {        
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.content .item {
+  line-height: 100%;
+  width: 220px;
+  height: 170px;
+  text-align: center;
+  border: 1px solid rgb(204, 204, 204);
+  margin-top: 10px;
+  margin-right: 10px;
+  position: relative;
+}
+.item.item1 {
+  width: 315px;
+}
+.item.item2 {
+  width: 310px;
+}
+.item.item3 {
+  width: 280px;
+}
+.item.item8,
+.item.item9 {
+  width: 305px;
+}
+.item.item10 {
+  width: 305px;
+}
+.item p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+footer {
+  height: 120px;
+  background: rgb(102, 102, 102);
+  height: 100px;
+  text-align: center;
+  padding: 20px;
+}
