@@ -27,6 +27,7 @@ header {
   color: #fff;
 }
 .logo {
+  font-size: 26px;
   position: absolute;
   top: 50%;
   left: 0%;
@@ -41,6 +42,14 @@ header {
 }
 .header ul > li {
   display: inline-block;
+}
+.header ul li a {
+  padding: 4px;
+}
+.header ul li a:hover {
+  color: blueviolet;
+  background: white;
+  border-radius: 4px;
 }
 .banner {
   height: 300px;
