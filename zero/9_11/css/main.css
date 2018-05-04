@@ -411,8 +411,11 @@ footer table th {
 footer table td {
   font-size: 16px;
   line-height: 46px;
-  color: rgba(255, 255, 255, 0.3);
+
   padding-right: 100px;
+}
+footer table td a {
+  color: #989494 !important;
 }
 footer .intro {
   position: absolute;
@@ -426,7 +429,6 @@ footer .intro h3 {
 }
 footer .intro p{
   width: 259px;
-
   font-size: 18px;
   line-height: 28px;
   margin-top: 28px; 
@@ -439,5 +441,4 @@ footer .contact {
 }
 footer .contact a {
   margin-right: 28px;
- 
 }
