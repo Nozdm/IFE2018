@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>17_2</title>
+  <style>
+    input {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果 : &nbsp;&nbsp;</p>
+    <script>
+    var dec_num_node = document.getElementById('dec-number');
+    var result_node = document.getElementById('result');
+    var bin_bit_node = document.getElementById('bin-bit');
+    function dec2bin(decNumber,bin_bit_num) {
+      // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+      //console.log(decNumber);
+      //console.log(/^\d+$/.test(parseFloat(dec_num.value)));
+      if (/^\d+$/.test(decNumber)) {
+        var sBin = [];
+        while (decNumber)　{
+          var remainder = decNumber % 2;
+          decNumber = Math.floor(decNumber/2);
+          /*每次往前面插入数据*/
+          sBin.unshift(remainder);
+        }
+      }else {
+        console.log('不是非负整数');
+        dec_num_node.value = "";
+      }
+      //console.log(sBin);
+      //console.log(sBin.length, bin_bit_num);
+      if (sBin.length > bin_bit_num) {
+        console.log('位数不对哦，这样可没有正确结果');
+      } else {
+        // 因为 数组在增加，那么每一次的数组长度也在变化。
+        var length = sBin.length;
+        for(var i=0;i<bin_bit_num-length; ++i) {
+          sBin.unshift(0);
+        }
+      }
+      result_node.innerHTML = '运算结果 : &nbsp;&nbsp;' + sBin.join('');
+      
+    }
+    // 实现当点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+    // Some coding
+    document.getElementById('trans-btn').onclick = function(){
+      dec2bin(parseFloat(dec_num_node.value),parseFloat(bin_bit_node.value));
+    }
+    // 新的需求是，转化显示后的二进制数为bin-bit中输入的数字宽度，例如
+    // dec-number为5，bin-bit为5，则转化后数字为00101
+    // 如果bin-bit小于转化后的二进制本身位数，则使用原本的位数，如dec-number为5，bin-bit为2，依然输出101，但同时在console中报个错
+    </script>
+</body>
+</html>
+</body>
+</html>
