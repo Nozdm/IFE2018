@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>复杂页面的实现</title>
+  <link rel="stylesheet" href="reset_1.css">
+  <link rel="stylesheet" href="main_1.css">
+</head>
+<body>
+  <div class="layout">
+    <div id="sidebar">
+      <div class="icon icon-telegram"><img src="images/icon-telegram.png" alt=""icon-telegram></div>
+      <div class="icon icon-rocket"><img src="images/icon-rocket.png" alt="icon-rocket"></div>
+      <div class="icon icon-game"><img src="images/icon-game.png" alt="icon-game"></div>
+      <div class="icon icon-add"><img src="images/icon-add.png" alt="icon-add"></div>
+      <div class="bottom">
+        <span class="icon icon-grid">
+          <img src="images/icon-grid.png" alt="icon-grid">
+        </span> 
+        <span class="icon icon-setting">
+          <img src="images/icon-setting.png" alt="icon-setting">
+        </span>
+      </div>
+    </div>
+    <div id="nav">
+      <div class="sub-nav">
+        <div class="head">
+          <!-- h2 改成span 可以少写css代码 但不好-->
+          <h2>MENU</h2>
+          <span class="icon icon-setting">
+            <img src="images/icon-setting.png" alt="icon-setting">
+          </span>
+          <div class="menu">
+            <div class="sub-menu">
+              <p>Overview</p>
+            </div>
+            <div class="sub-menu">
+              <p>Sales</p>
+            </div>
+            <div class="sub-menu">
+              <p>Your Staff</p>
+            </div>
+            <div class="sub-meun">
+              <p>Analytics & Targeting</p>
+            </div>
+            <div class="sub-menu">
+              <p>What’s New</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="subnav">
+        <div class="head">
+          <h2>YOUR PRODUCTS</h2>
+          <span class="icon icon-setting">
+            <img src="images/icon-setting.png" alt="icon-setting">
+          </span>
+        </div> 
+        <div class="products">
+          <div class="sub-pro">
+            <p>Books</p>
+            <span class="icon icon-books"><img src="images/icon-books.png" alt="icon-books"></span>
+          </div>
+          <div class="sub-pro">
+            <p>Tutorials</p>
+            <span class="icon icon-tutorials"><img src="images/icon-tutorials.png" alt="icon-tutorials"></span>
+          </div>
+          <div class="sub-pro">
+            <p>Stocks</p>
+            <span class="icon icon-stocks"><img src="images/icon-stocks.png" alt="icon-stocks"></span>
+          </div>
+          <div class="sub-pro">
+            <p>Infographics</p>
+            <span class="icon icon-infographics"><img src="images/icon-infographics.png" alt="icon-infographics"></span>
+          </div>
+        </div>
+      </div>
+      <div class="subnav">
+        <div class="head">
+          <h2>DASHBOARD</h2>
+          <span class="icon icon-setting">
+            <img src="images/icon-setting.png" alt="icon-setting">
+          </span>
+        </div>
+        <div class="dashboard">
+          <div class="sub-bro">
+            <p>What’s New</p>
+          </div>
+          <div class="sub-bro">
+            <p>Connections</p>
+          </div>
+          <div class="sub-bro">
+            <p>Integrations</p>
+          </div>
+          <div class="sub-bro">
+            <p>Account Settings</p>
+          </div>
+         <div class="sub-bro">
+            <p>App Settings</p>
+         </div>
+        </div>
+      </div>
+      <div class="goals">
+         <span>Monthly Goals</span>
+         <span>$580/&3200</span>
+         <div class="pro-all">
+           <div class="now"></div>
+         </div>
+      </div>            
+    </div>
+    <div id="message">
+      <div class="header">
+        <h2>Message</h2>   
+        <div class="user clearfix">
+          <div class="user-head">
+            <span class="icon-head-1">
+              <img src="images/head-1.png" alt="head-1">
+            </span>
+          </div>
+          <p class="user-name">Jordan J.</p>
+          <p class="user-intro">Administrator</p>
+          <span class="icon icon-down">
+            <img src="images/icon-down.png" alt="icon-down">
+          </span>
+        </div>  
+      </div>
+      <div class="board">
+        <div id="search">
+          <input type="text" placeholder="search">
+          <span class="icon icon-search">
+            <img src="images/icon-search.png" alt="icon-search">
+          </span>
+        </div>
+        <div id="status-board">
+          <div id="user-col">
+            <span class="user-name">Bessie Berry</span>
+            <div class="icon-all">
+              <span class="icon"><img src="images/icon-user-add.png" alt="icon-user-add"></span>
+              <span class="icon"><img src="images/icon-upload.png" alt="icon-upload"></span>
+              <span class="icon"><img src="images/icon-trash.png" alt="icon-trash"></span>
+            </div>
+          </div>
+          <div class="status-pages">
+            <span>1 of 28</span>
+            <span class="icon"><img src="images/icon-left.png" alt="icon-left"></span>
+            <span class="icon"><img src="images/icon-right.png" alt="icon-right"></span>
+          </div>
+        </div>
+      </div>
+      <div id="sub-message">
+        <div id="friends-list">
+          <div class="friend">
+            <div class="user clearfix">
+              <!-- 图片的浮动效果使user-name 向上浮动 --> 
+              <div class="user-head">
+                <span class="icon-head-1">
+                  <img src="images/head-1.png" alt="head-1">
+                </span>
+              </div>
+              <p class="user-name">Bessie Berry</p>
+              <p class="user-intro">Twitter</p>
+            </div>
+            <span class="online-time">3m</span>
+              <p class="short-intro">I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick, and stable.</p>  
+          </div>
+          <div class="friend">
+            <div class="user clearfix">
+              <div class="user-head">
+                <span class="icon-head-2">
+                  <img src="images/head-2.png" alt="head-2">
+                </span>
+              </div>
+              <p class="user-name">Victor Weber</p>
+              <p class="user-intro">Adobe</p>
+            </div>
+            <span class="online-time">8m</span>
+            <p class="short-intro">I shared this on my fb wall a few months back, and I thought I'd share it here again because it's such a great</p> 
+          </div>
+          <div class="friend">
+            <div class="user clearfix">
+              <div class="user-head">
+                <span class="icon-head-3">
+                  <img src="images/head-3.png" alt="head-3">
+                </span>
+              </div>
+              <p class="user-name">Dustin Benson</p>
+              <p class="user-intro">Facebook</p>
+            </div>  
+            <span class="online-time">Yesterday</span>
+            <p class="short-intro">If there is anyone who needs an invitation please add yourself in the comments of this post!</p>
+          </div>
+          <div class="friend">
+            <div class="user clearfix">
+              <div class="user-head">
+                <span class="icon-head-4">
+                  <img src="images/head-4.png" alt="head-4">
+                </span>
+              </div>
+              <p class="user-name">Jack Mason</p>
+              <p class="user-intro">Yahoo</p> 
+            </div>
+            <span class="online-time">Yesterday</span>
+            <p class="short-intro">BruteDC is a peer-to-peer movie+tv series sharing and downloading platform which works on intranet inside</p>  
+          </div>
+          <div class="friend">
+            <div class="user clearfix">
+              <div class="user-head">
+                <span class="icon-head-5">
+                  <img src="images/head-5.png" alt="head-5">
+                </span>
+              </div>
+              <p class="user-name">Stephen Shelton</p>
+              <p class="user-intro">Snapchat</p>
+            </div>  
+            <span class="online-time">13 Jun</span>
+            <p class="short-intro">Yes, p2p traffic is often filtered (QoSed). Although i do use BT on O2 wires, and in good days dl speed</p>
+          </div>
+          <div class="friend">
+            <div class="user clearfix">
+              <div class="user-head">
+                <span class="icon-head-6">
+                  <img src="images/head-6.png" alt="head-6">
+                </span>
+              </div>
+              <p class="user-name">Sally Willis</p>
+              <p class="user-intro">Twitter</p>
+            </div>  
+            <span class="online-time">13 Jun</span>
+            <p class="short-intro">Yes, it's O2: 'internet extreme', which is no longer offered.</p>
+          </div>
+          <div class="friend">
+            <div class="user clearfix">
+              <div class="user-head">
+                <span class="icon-head-7">
+                  <img src="images/head-7.png" alt="head-7">
+                </span>
+              </div>
+              <p class="user-name">Robert Patton</p>
+              <p class="user-intro">A Team</p>
+            </div>  
+            <span class="online-time">9 Jun</span>
+            <p class="short-intro">I change my service from this 4Mb plan to their much cheaper 8Mb plan, my speed will dramatically decrease.</p>
+          </div>
+        </div>
+        <div id="friends-status">
+          <!--只有Tuesday New—Messages 、
+            那我假定下面的是对应的内容
+          -->
+          <div class="sub-status">
+            <div class="status">
+              <div class="user clearfix">
+                <div class="user-head">
+                  <span class="icon-head-1">
+                    <img src="images/head-1.png" alt="head-1">
+                  </span>
+                </div>
+                <p class="user-name">Bessie Berry</p>
+                <p class="time">8:31 AM</p>
+              </div>
+              <p class="publish">Hi guys Ive got the O2 package and have really slow internet. A speed check online said i can get 3mbps but it seems more like 0.5 these days, just freezing and taking ages to open pages and open audio files for example. I have decided to switch to the UPC package which offers 10mbps but do you think i will get it?</p>
+              </div>
+            <div class="status">
+              <div class="user clearfix">
+                <div class="user-head">
+                  <span class="icon-head-1">
+                    <img src="images/head-1.png" alt="head-1">
+                  </span>
+                </div>
+                <p class="user-name">Bessie Berry</p>
+                <p class="time">8:31 AM</p>
+              </div> 
+              <p class="publish">I have internet for 9 month and nevere could benefit from the full capacity of 5Mbit/s as it is filtered by O2 when it detect traffic on public p2p sharing in my situation all my internet speed slows to 512Kbit/s. I never had 400KB/s on when downloading from p2p public servers like torrent emule etc. I downoad with 500KB/s from private trakers instead. So conlcusion O2 block trafic on p2p connections. I have made hundreds of test in Italy and Sweden and Romania with the same file to doanload with the same setting and same antivirus and just needed to open ports in firewall and forward same ports and the speed was at full capacity in 1 minute. here in 9 month never had this luck.</p>        
+            </div>
+          </div>
+          <div class="sub-staus">
+            <div class="status">
+              <div class="user clearfix">
+                <div class="user-head">
+                  <span class="icon-head-1">
+                    <img src="images/head-1.png" alt="head-1">
+                  </span>
+                </div>
+                <p class="user-name">Bessie Berry</p>
+                <p class="time">8:31 AM</p>
+              </div> 
+              <p class="publish">Funny comparison. so would the proper antivirus not slow down the internet as much or do you mean a freebie doenst protect the computer from viruses?</p>
+            </div>
+            <div class="status">
+              <div class="user clearfix">
+                <div class="user-head">
+                  <span class="icon-head-1">
+                    <img src="images/head-1.png" alt="head-1">
+                  </span>
+                </div>
+                <p class="user-name">Bessie Berry</p>
+                <p class="time">8:31 AM</p> 
+              </div>
+              <p class="publish">I pay for the 4Mb/sec down, 512 Kb/sec up service from O2, and haven't had any problems. In fact, it's relatively quick, and stable. It's not perfect, but I really don't have issues, as long as I keep track of what I'm doing on it. I max out at about 3 Mb/sec down, and 350 Kb/sec up. Probably because of a noisy telephone line, not because I'm being throttled. When my uploads go over 25 KB/sec (note, bytes, not bits), my download speed suffers. This is expected, as downloads require upload bandwidth as well. </p>
+            </div>
+          </div>
+          <div class="sub-status">
+            <div class="status">
+              <div class="user clearfix">
+                <div class="user-head">
+                  <span class="icon-head-1">
+                    <img src="images/head-1.png" alt="head-1">
+                  </span>
+                </div>
+                <p class="user-name">Bessie Berry</p>
+                <p class="time">8:31 AM</p>
+              </div>
+              <p class="publish">I pay for the 4Mb/sec down, 512 Kb/sec up service from O2. In fact, it's relatively quick, and stable. It's not perfect, but I really don't have issues, as long as I keep track of what I'm doing on it. </p>
+            </div>
+          </div>
+          <div id="status-push">
+            <input type="text">
+            <span class="icon icon-add-2">
+              <img src="images/icon-add-2.png" alt="icon-add-2">
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

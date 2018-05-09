@@ -1,0 +1,327 @@
+
+.layout {
+  display: flex;
+}
+/*common*/
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/*main*/
+#sidebar {
+  position: relative;
+  width: 100px;
+  background-color: #1d2531;
+}
+
+#sidebar div.icon {
+  margin: 20px;
+}
+/*切图只能切出矩形
+  当背景色一致时，看不出来
+#sidebar div.icon img {
+  border-radius: 60px;
+}*/
+#sidebar .bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+/*设置栏*/
+#nav {
+  width: 250px;
+  background-color: #1d2531;
+  font-size: 14px;
+  line-height: 36px;
+  position: relative;
+  font-family: ProximaNova-Semibold;
+}
+.sub-nav {
+  /*宽度加左右padding 刚好 250px*/
+  width: 190px;
+  padding: 30px;
+  border-bottom: 1px solid #2a3547;
+}
+#nav .head {
+  position: relative;
+}
+/*小按钮定位*/
+#nav  .head .icon-setting {
+  position: absolute;
+  right: 0;
+  top: 2px;
+}
+#nav h2 {
+  font-size: 12px;
+  line-height: 40px;
+  color: #5b6779;
+}
+#nav p {
+  font-size: 14px;
+  line-height: 36px;
+  color: #b7c0cd;
+}
+.sub-nav .sub-pro {
+  position: relative;
+} 
+.sub-nav .sub-pro p{
+  padding-left: 30px;
+}
+.sub-nav .sub-pro span {
+  position: absolute;
+  top: 0px;
+}
+.sub-nav:nth-child(3) {
+  border-bottom: none;
+}
+/*消息气泡的css实现*/
+.menu .sub-menu,
+.dashboard .sub-bro {
+  position: relative;
+}
+/*选中sub-menu的父级（menu）的第二个子元素*/
+.menu .sub-menu:nth-child(2)::after {
+  content: '54';
+
+  color: #fff;
+  width: 32px;
+  height: 24px;
+  /*行高等于整体高度 单行垂直居中*/
+  line-height: 24px;
+  /*水平居中*/
+  text-align: center;
+	background-image: linear-gradient(0deg, #1991eb 0%,#2ea1f8 100%);
+  border-radius: 12px;
+  /*绝对定位*/
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.dashboard .sub-bro:nth-child(1)::after {
+  content: '21';
+  color: #fff;
+  width: 32px;
+  height: 24px;
+  /*行高等于整体高度 单行垂直居中*/
+  line-height: 24px;
+  /*水平居中*/
+  text-align: center;
+	background-image: linear-gradient(0deg, #1991eb 0%,#2ea1f8 100%);
+  border-radius: 12px;
+  /*绝对定位*/
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.dashboard .sub-bro:nth-child(3)::after {
+  content: '!';
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  color: #fff;
+	background-image: linear-gradient(180deg, #f45438 0%, #cb270a 100%);
+	border-radius: 12px;
+  /*绝对定位*/
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/*setting 底部*/
+#nav .goals {
+  position: absolute;
+  left: 30px;
+  bottom: 23px;
+}
+.goals span {
+  font-size: 14px; 
+  color: #ffffff;
+  line-height:0;
+  margin-bottom: 13px;
+}
+.goals span:nth-child(2) {
+  margin-left: 22px;
+}
+.goals .pro-all {
+  width: 190px;
+	height: 4px;
+	background-color: rgba(71, 83, 100, 0.3);
+	border-radius: 2px;
+}
+.goals .pro-all .now {
+  width: 40px;
+	height: 4px;
+	background-image: linear-gradient(0deg, 
+		#7f5be6 1%, 
+		#9d8fe3 100%);
+	border-radius: 2px;
+}
+/*第三栏*/
+#message {
+  flex-grow: 1;
+  font-family: ProximaNova-Regular;
+}
+#message .header {
+  position: relative;
+}
+#message .header h2 {
+  height: 80px;
+  font-size: 24px;
+  line-height: 50px;
+  color: #354052;
+  padding-left: 30px;
+}
+#message .header .user {
+  position: absolute;
+  top: 11px;
+  right: 31px;
+  width: 204px;
+  height: 58px;
+}
+#message .header .user .user-head {
+  float: left;
+  margin-right: 6px;
+}
+#message .header .user .icon-down {
+  position: absolute;
+  right: 0;
+  top: 24px;
+}
+#message .header .user p{
+  margin-top: 10px;
+}
+#sub-message {
+  display: flex;
+}
+#friends-list {
+  font-family: ProximaNova-Semibold;
+  color: #86a5e6;
+  width: 400px;
+}
+#friends-status {
+  font-size: 14px;
+}
+ #search{
+  margin: 15px 0 19px 30px;
+  position: relative;
+}
+#search input{
+	height: 36px;
+	border-radius: 4px;
+  border: solid 1px #e5e8ee;
+  padding-left: 15px;
+  font-size: 14px;
+}
+#search span {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+}
+#friends-list .friend {
+  padding: 14px 0 0 29px;
+  border: 1px solid #e6e9ec;
+  position: relative;
+}
+.friend .user-head {
+  float: left;
+  margin-right: 20px;
+}
+.friend .user-name {
+  padding-top: 10px;
+  font-size: 16px;
+  color: #585d68;
+  vertical-align: center;
+}
+.friend .user-intro {
+  font-size: 14px;
+  color: #b5b5b5;
+}
+.friend .online-time {
+  position: absolute;
+  top: 23px;
+  right: 27px;
+  font-size: 14px;
+  line-height: 36px;
+  color: #7f8fa4;
+}
+.friend .short-intro {
+  font-size: 14px;
+  line-height: 19px;
+  height: 38px;
+  color: #585d68;
+  font-family: ProximaNova-Regular;
+  margin-top: 14px;
+  margin-bottom: 23px;
+  padding-right: 45px;
+  overflow: hidden;
+}
+/*为什么是2 而不是1呢， 
+因为nth-of-type选中的是同种标签
+在friends-list 的子元素都是div
+而第一个是 div.searchS 
+*/
+.friend:nth-of-type(2) .user-name{
+  color: #2399f1;
+}
+.friend:nth-of-type(2) .user-name::before{
+  content: '';
+  display: inline-block;
+  width: 8px;
+	height: 8px;
+  background-color: #00aaff;
+  border-radius: 4px;
+  margin-right: 7px;
+}
+.friend:nth-of-type(2)::after {
+  content: '4';
+  display: inline-block;
+  border-radius: 12px;
+  background-image: linear-gradient(0deg, #1991eb 0%, #2ea1f8 100%);
+  color: #ffffff;
+	width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  position: absolute;
+  right: 21px;
+  bottom: 28px;
+}
+
+
+.status .user > * {
+  display: inline;
+  margin-right: 9px;
+  vertical-align: top;
+}
+
+#status-push {
+  position: relative;
+  /*父容器相对定位，便于定位*/
+}
+#status-push input{
+  /*input 撑满整个父容器*/
+  height: 54px;
+  width: 100%;
+	background-color: #ffffff;
+	border-radius: 4px;
+	border: solid 1px #dfe3e9;
+}
+#status-push span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 54px;
+	height: 54px;
+	background-image: linear-gradient(0deg, #f1f3f7 0%, #fff 100%), linear-gradient(#fff, #fff);
+	border-radius: 4px 0px 0px 4px;
+  border: solid 1px #ced0da;
+  text-align: center;
+}
+#status-push span img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}

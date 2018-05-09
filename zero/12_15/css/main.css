@@ -1,0 +1,453 @@
+/*
+  *因为并没有设置box-sizing为border-box 所有元素都是标准的盒模型
+  *设置的宽度只代表内容框
+  *后来才发现这样的盒模型，在计算的时候比较麻烦
+  *终于明白了 border-box的好处了。
+
+  其他地方到还好，没有产生过多的影响。
+  但是在计算搜索栏的那一块，突然就意识到了，标准盒模型的缺陷。
+*/
+.layout {
+  display: flex;
+}
+/*common*/
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/*main*/
+#sidebar {
+  position: relative;
+  width: 100px;
+  background-color: #1d2531;
+}
+
+#sidebar div.icon {
+  margin: 20px;
+}
+/*切图只能切出矩形
+  当背景色一致时，看不出来
+#sidebar div.icon img {
+  border-radius: 60px;
+}*/
+#sidebar .bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+/*设置栏*/
+#nav {
+  width: 250px;
+  background-color: #1d2531;
+  font-size: 14px;
+  line-height: 36px;
+  position: relative;
+  font-family: ProximaNova-Semibold;
+}
+.sub-nav {
+  /*宽度加左右padding 刚好 250px*/
+  width: 190px;
+  padding: 30px;
+  border-bottom: 1px solid #2a3547;
+}
+#nav .head {
+  position: relative;
+}
+/*小按钮定位*/
+#nav  .head .icon-setting {
+  position: absolute;
+  right: 0;
+  top: 2px;
+}
+#nav h2 {
+  font-size: 12px;
+  line-height: 40px;
+  color: #5b6779;
+}
+#nav p {
+  font-size: 14px;
+  line-height: 36px;
+  color: #b7c0cd;
+}
+.sub-nav .sub-pro {
+  position: relative;
+} 
+.sub-nav .sub-pro p{
+  padding-left: 30px;
+}
+.sub-nav .sub-pro span {
+  position: absolute;
+  top: 0px;
+}
+.sub-nav:nth-child(3) {
+  border-bottom: none;
+}
+/*消息气泡的css实现*/
+.menu .sub-menu,
+.dashboard .sub-bro {
+  position: relative;
+}
+/*选中sub-menu的父级（menu）的第二个子元素*/
+.menu .sub-menu:nth-child(2)::after {
+  content: '54';
+
+  color: #fff;
+  width: 32px;
+  height: 24px;
+  /*行高等于整体高度 单行垂直居中*/
+  line-height: 24px;
+  /*水平居中*/
+  text-align: center;
+	background-image: linear-gradient(0deg, #1991eb 0%,#2ea1f8 100%);
+  border-radius: 12px;
+  /*绝对定位*/
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.dashboard .sub-bro:nth-child(1)::after {
+  content: '21';
+  color: #fff;
+  width: 32px;
+  height: 24px;
+  /*行高等于整体高度 单行垂直居中*/
+  line-height: 24px;
+  /*水平居中*/
+  text-align: center;
+	background-image: linear-gradient(0deg, #1991eb 0%,#2ea1f8 100%);
+  border-radius: 12px;
+  /*绝对定位*/
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.dashboard .sub-bro:nth-child(3)::after {
+  content: '!';
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  color: #fff;
+	background-image: linear-gradient(180deg, #f45438 0%, #cb270a 100%);
+	border-radius: 12px;
+  /*绝对定位*/
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/*setting 底部*/
+#nav .goals {
+  position: absolute;
+  left: 30px;
+  bottom: 23px;
+}
+.goals span {
+  font-size: 14px; 
+  color: #ffffff;
+  line-height:0;
+  margin-bottom: 13px;
+}
+.goals span:nth-child(2) {
+  margin-left: 22px;
+}
+.goals .pro-all {
+  width: 190px;
+	height: 4px;
+	background-color: rgba(71, 83, 100, 0.3);
+	border-radius: 2px;
+}
+.goals .pro-all .now {
+  width: 40px;
+	height: 4px;
+	background-image: linear-gradient(0deg, 
+		#7f5be6 1%, 
+		#9d8fe3 100%);
+	border-radius: 2px;
+}
+/*第三栏 */
+#message {
+  flex-grow: 1;
+  font-family: ProximaNova-Regular;
+}
+#header {
+  border-bottom:  1px solid #e6e9ec;
+  position: relative;
+}
+#header h2 {
+  height: 80px;
+  font-size: 24px;
+  line-height: 50px;
+  color: #354052;
+  padding-left: 30px;
+}
+#header .user {
+  position: absolute;
+  top: 11px;
+  right: 31px;
+  width: 204px;
+  height: 58px;
+}
+#header .user .user-head {
+  float: left;
+  margin-right: 6px;
+}
+#header .user .icon-down {
+  position: absolute;
+  right: 0;
+  top: 24px;
+}
+#header .user p{
+  margin-top: 10px;
+}
+#search {
+  float: left;
+}
+#search {
+  width: 340px;
+  border: 1px solid #e6e9ec;
+  border-top: none;
+  border-bottom: none;
+  padding: 15px 29px;
+  position: relative;
+}
+#search input {
+  width: 323px;
+  height: 36px;
+  padding-left: 15px;
+  border-radius: 4px;
+	border: solid 1px #e5e8ee;
+}
+#search .icon {
+  position: absolute;
+  right: 50px;
+  top: 18px;
+  transform: translate(50%,50%)
+}
+#status-board {
+  margin-left: 400px;
+  padding: 15px 0 0 25px;
+  position: relative;
+}
+#status-board  * {
+  /*把所有子元素变成inline-block*/
+  display: inline-block;
+  vertical-align: top;
+}
+#status-board .icon-divider {
+  margin: 0 21px;
+}
+#status-pages {
+  float: right;
+  margin-right: 25px;
+}
+#status-board .user-name,
+#status-pages #page{
+  margin-top: 10px
+}
+#aut, #up-down {
+  /*元素设置为inline-block 
+  元素与元素之间存在空格或换行符，
+  会转化成一个空格*/
+  font-size: 0;
+}
+/*在线的状态*/
+#status-board .user-name::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+	height: 8px;
+  background-color: #1bb934;
+  border-radius: 4px;
+  margin-left: 9px;
+}
+#friends-list {
+  font-family: ProximaNova-Semibold;
+  color: #86a5e6;
+  float: left;
+  width: 400px;
+}
+#friends-status {
+  font-size: 14px;
+  margin-left: 400px;
+}
+.friend {
+  padding: 14px 0 0 29px;
+  border: 1px solid #e6e9ec;
+  position: relative;
+}
+.friend .user-head {
+  float: left;
+  margin-right: 20px;
+}
+.friend .user-name {
+  padding-top: 10px;
+  font-size: 16px;
+  color: #585d68;
+  vertical-align: center;
+}
+.friend .user-intro {
+  font-size: 14px;
+  color: #b5b5b5;
+}
+.friend .online-time {
+  position: absolute;
+  top: 23px;
+  right: 27px;
+  font-size: 14px;
+  line-height: 36px;
+  color: #7f8fa4;
+}
+.friend .short-intro {
+  font-size: 14px;
+  line-height: 19px;
+  height: 38px;
+  color: #585d68;
+  font-family: ProximaNova-Regular;
+  margin-top: 14px;
+  margin-bottom: 23px;
+  padding-right: 45px;
+  overflow: hidden;
+}
+.friend:first-child {
+  border-left: 3px solid #2399f1;
+}
+.friend:first-child .user-name{
+  color: #2399f1;
+}
+.friend:first-child .user-name::before{
+  content: '';
+  display: inline-block;
+  width: 8px;
+	height: 8px;
+  background-color: #00aaff;
+  border-radius: 4px;
+  margin-right: 7px;
+}
+.friend:first-child::after {
+  content: '4';
+  display: inline-block;
+  border-radius: 12px;
+  background-image: linear-gradient(0deg, #1991eb 0%, #2ea1f8 100%);
+  color: #ffffff;
+	width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  position: absolute;
+  right: 21px;
+  bottom: 28px;
+}
+
+#friends-status .status {
+  border-top: 1px solid #e6e9ec;
+  padding: 0 30px;
+  position: relative;
+}
+.status .sub-status {
+  margin: 25px 0;
+  font-size: 14px;
+  color: #585d68;
+  font-family: ProximaNova-Regular;
+}
+/*只有Tuesday New—Messages 、
+那我假定下面的是对应的内容*/
+.status:nth-child(2)::before {
+  content: 'Tuesday';
+  height: 13px;
+  padding: 0 15px;
+  color: #2399f1;
+  background: #fff;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);    
+}
+.status:nth-child(3)::before {
+  content: 'New Messages';
+  height: 13px;
+  padding: 0 15px;
+  color: #2399f1;
+  background: #fff;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.sub-status .user img {
+  float: left;
+  margin-right: 20px;
+}
+.sub-status .user-name,
+.sub-status .time {
+  display: inline-block;
+  margin-right: 9px;
+  margin-bottom: 10px
+}
+.sub-status .user-name {
+  font-family: ProximaNova-Semibold;
+  font-size: 16px;
+}
+.sub-status .time {
+  color: #7f8fa4;
+}
+.sub-status .photo{
+  margin: 10px 10px 0 0;
+  position: relative;
+  display: inline-block;
+}
+/*鼠标悬浮在上面， 出现图标*/
+.sub-status .photo .cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: rgba(50, 62, 78,.6);
+  display: none;
+}
+.sub-status .photo .cover img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 25px;
+}
+.sub-status .photo:hover .cover{
+  display: block;
+}
+#status-push {
+  /*父容器相对定位，便于定位*/
+  position: relative;
+  
+}
+#status-push input{
+  /*input 撑满整个父容器*/
+  height: 54px;
+  width: 100%;
+	background-color: #ffffff;
+	border-radius: 4px;
+  border: solid 1px #dfe3e9;
+  margin: 0 30px;
+}
+#status-push span {
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 54px;
+	height: 54px;
+	background-image: linear-gradient(0deg, #f1f3f7 0%, #fff 100%), linear-gradient(#fff, #fff);
+	border-radius: 4px 0px 0px 4px;
+  border: solid 1px #ced0da;
+  text-align: center;
+}
+#status-push span img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
