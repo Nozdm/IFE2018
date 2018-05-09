@@ -5,7 +5,7 @@
   *终于明白了 border-box的好处了。
 
   其他地方到还好，没有产生过多的影响。
-  但是在计算搜索栏的那一块，突然就意识到了，标准盒模型的缺陷。
+  但是在计算搜索栏的那一块，突然就意识到了，标准盒模型的麻烦。
 */
 .layout {
   display: flex;
@@ -244,7 +244,10 @@
 }
 #status-board .user-name,
 #status-pages #page{
-  margin-top: 10px
+  margin-top: 10px;
+}
+#status-pages #page {
+  margin-right: 15px;
 }
 #aut, #up-down {
   /*元素设置为inline-block 
