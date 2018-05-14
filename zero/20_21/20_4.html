@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">    
+  <title>IFE ECMAScript</title>
+  <style>
+    .palette {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .palette li {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #000;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>            
+  <ul class="palette">
+    <li style="background-color:crimson"></li>
+    <li style="background-color:bisque"></li>
+    <li style="background-color:blueviolet"></li>
+    <li style="background-color:coral"></li>
+    <li style="background-color:chartreuse"></li>
+    <li style="background-color:darkolivegreen"></li>
+    <li style="background-color:cyan"></li>
+    <li style="background-color:#194738"></li>        
+  </ul>
+
+  <p class="color-picker"></p>
+
+  <script>
+    // 使用事件代理重写一遍
+    var palette = document.getElementsByClassName('palette')[0];
+    palette.addEventListener('click', function(e){
+      console.log(e.target);
+      var cNode = e.target;
+      var cNodeStyle = cNode.style.backgroundColor;
+      var p = document.getElementsByClassName("color-picker")[0]
+      p.innerHTML = cNodeStyle;
+      p.style.color = cNodeStyle;
+    })
+  </script>
+</body>
+</html>

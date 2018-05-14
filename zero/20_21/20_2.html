@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>20_2</title>
+  <style>
+    select {
+        display: none;
+    }
+</style>
+</head>
+<body>
+  <div id="layout">
+      <label>
+        <input id="school" name="status" type="radio">
+        School
+      </label>
+      <label>
+        <input id="company" name="status" type="radio">
+        Company
+      </label>
+    
+      <select id="school-select">        
+        <option>北京邮电大学</option>
+        <option>黑龙江大学</option>
+        <option>华中科技大学</option>
+      </select>
+      <select id="company-select">        
+        <option>百度</option>
+        <option>爱奇艺</option>        
+      </select>     
+  </div>
+  <script>
+    // 给school标签添加点击事件
+    var layout = document.getElementById('layout');
+    var lsNode = document.getElementById('school');
+    var lcNode = document.getElementById('company');
+    var ssNode = document.getElementById('school-select');
+    var scNode = document.getElementById('company-select');
+    
+    lsNode.onclick = function(){
+      ssNode.style.display = 'inline-block';
+      scNode.style.display = 'none';
+      // 设置可见个数， 似乎达到效果，但和点击出现的效果，有点差异呢。
+      ssNode.size = 3;
+      //设置绝对定位，是为了当size变为3的时候，会向下弹出，而不是向上弹出
+      ssNode.style.position = 'absolute';
+      ssNode.style.top = '10px';
+      ssNode.style.left = '200px';
+      ssNode.focus();
+      
+    }
+    lcNode.onclick = function(){
+      ssNode.style.display = 'none';
+      scNode.style.display = 'inline-block';
+      scNode.size = 2;
+      scNode.style.position = 'absolute';
+      scNode.style.top = '10px';
+      scNode.style.left = '300px';
+      scNode.focus();
+    }
+    
+    ssNode.onchange = function(){
+      ssNode.size = 1;
+    }
+    scNode.onchange = function(){
+      scNode.size = 1;
+    }
+
+    /*
+    ssNode.addEventListener('click',function(e){
+      console.log(e);
+      console.log(e.target);
+      console.log('x: ' +e.clientX, 'y: '+e.clientY);
+      console.log('x1: '+e.screenX, 'y1: '+e.screenY);
+      console.log('x2'+e.offsetX,'x2'+e.offsetY);
+      ssNode.focus();
+      ssNode.setAttribute('autofocus','true')
+
+
+    })
+    */
+  </script>
+</body>
+</html>

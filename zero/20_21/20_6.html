@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>20_6</title>
+  <style>
+    #container {
+      width: 480px;
+      height: 480px;
+      background-image: url('20_6.jpg');
+      background-position: 0px 0;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="container">
+  </div>
+  <script>
+    var conNode = document.getElementById('container');
+    var bgposition = [0,0];
+    function anime() {
+      var x = setInterval(function(){
+      if (bgposition[1] < 480*16) {
+        console.log('111');
+        bgposition[1] += 480;
+        var gbps = bgposition[0]+ ' -'+ bgposition[1] +'px';
+      console.log(gbps);
+        conNode.style.backgroundPosition = gbps;
+      }else {
+        clearInterval(x);
+        bgposition[1] = 0;
+        anime();
+      }
+      },100);
+    }
+    anime();
+  </script>
+</body>
+</html>

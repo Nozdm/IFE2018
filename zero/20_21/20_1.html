@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>20</title>
+</head>
+<body>
+  <input id="name" type="text">    
+  <button id="submit-btn">Submit</button>
+
+  <script>
+    var inputNode = document.getElementById('name');
+    // 之前的onclick事件，当teb到按钮时，按下回车 触发两次。
+    // 因为当按钮获得焦点，按下回车，会触发onclick事件。
+    // 现在更改为onmousedown事件，只监听鼠标点下事件
+    document.getElementById('submit-btn').onmousedown = function(){
+      console.log(inputNode.value);
+    }
+    document.onkeydown = function(e){     
+      if (13 == e.keyCode) {
+        // 13 是 enter的值
+        console.log(inputNode.value);
+      } else if (27 == e.keyCode) {
+        // 27 是 esc的值
+        inputNode.value = '';
+      }
+      
+    }
+  </script>
+</body>
+</html>
