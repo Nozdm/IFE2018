@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>25</title>
+  <style>
+    .box {
+      border: 2px solid ;
+      margin: 20px;
+      padding: 5px;
+    }
+    #time-select select {
+      width:  60px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 编码一 -->
+  <div class="box">
+    <p>编码一 打开console控制台 查看</p>
+    <script>
+      function Go() {
+        console.log('Go');
+      }
+      function GoSteps(n) {
+        console.log('第'+ (++flag) + '次验证'+ '如果没有输出Go，则说明不执行Go函数')
+        var argNum =  arguments.length;
+        if (argNum > 0) {
+          if ((typeof n == 'string') || n == false || n == 0 ) {
+            return ;
+          } else {
+            // true 默认是 1 
+            var loopN = (n>0) ? Math.floor(n) : 0; 
+            while(loopN--) {
+              Go();
+            }
+          }
+        } else {
+          Go();
+        }
+      }
+      var flag = 0;
+      GoSteps(10); // Go 10次
+      GoSteps(1); // Go 1次
+      GoSteps(); // Go 1次，认为缺少参数时，默认参数为1
+      GoSteps(0);  // 0次
+      GoSteps(-1);  // 0次
+      GoSteps(1.4);  // Go 1次
+      GoSteps(1.6);  // Go 1次
+      GoSteps(-1);  // 0次
+      GoSteps(true);  // Go 1次
+      GoSteps(false);  // 0次
+      GoSteps("Test");  // 0次
+      GoSteps(NaN);  // 0次
+      GoSteps(null);  // 0次
+    </script>
+  </div>
+  <!-- 编码二 -->
+  <div class="box">
+    <p>编码二 简单的时钟</p>
+    <p id="showTime-0"></p>
+    <p id="showTime-1"></p>
+    <script>
+      function getTime(flag){
+        // flag 是用来确定显示方式， 0 为第一种 二十四小时制， 1为第二种 ,小时制， 有am，pm之分
+        var date = new Date();
+        //console.log(date);
+        //console.log(date.getFullYear(), date.getMonth(), date.getDay(), date.getHours(), date.getMinutes(), date.getSeconds());
+        var year = date.getFullYear();
+        
+        // getMonth 返回 0-11 ,所以。。。
+        var month = timeCompletion(date.getMonth()+ 1);
+        
+        // 原来 getDate() 这个函数才是 得到 几日 
+        var day = timeCompletion(date.getDate()) 
+        
+        // getDay() 返回的是 星期中的某一天 0(星期日)- 6（星期六）
+        var week  = weekToString( date.getDay(), flag); 
+        
+        var hour = timeCompletion(date.getHours());
+        
+        var min = timeCompletion(date.getMinutes());
+        
+        var sec = timeCompletion(date.getSeconds());
+
+        var perTime = (flag == 0 ? '' : (hour<=12 ? 'AM': 'PM') );
+        var hour = (flag == 0 ? hour : (hour<12)? hour : hour-12 );
+        return {
+          'year': year,
+          'month': month,
+          'day': day,
+          'week': week,
+          'hour': hour,
+          'min': min,
+          'sec': sec,
+          'perTime': perTime
+        }
+      }
+      function weekToString(day, flag) {
+        var weekDay = (flag == 0 ? ['星期天','星期一','星期二','星期三','星期四','星期五','星期六']
+                          : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']);
+        
+        return weekDay[day];
+      }
+      function timeCompletion(num) {
+        return num>10?''+num:'0'+num;
+      }
+      function loopShowTime(){
+        var time = getTime(0); 
+        var str = time.year+'年'+time.month+'月'+time.day+'日'+time.week+' '+time.hour+':'+time.min+':'+time.sec
+        //console.log(str);
+        document.getElementById('showTime-0').innerText = str;
+        
+        var time = getTime(1); 
+        var str = time.year+'-'+time.month+'-'+time.day+' '+ time.week+' '+time.hour+':'+time.min+':'+time.sec +' ' + time.perTime;
+        document.getElementById('showTime-1').innerText = str;
+        setTimeout(loopShowTime,1000);
+      }
+      loopShowTime();
+    </script>
+  </div>
+  <div class="box">
+    <!-- 
+    <p>编码三： 直接使用了html5的时间控件</p>
+    <div id="timeSelect">
+        <input type="date" value="2001-01-01"/>
+        <input type="time" value="00:00:00"/>
+    </div>
+
+    <p id="result-wrapper">嘿嘿嘿</p>
+
+    <script>
+      var date = document.querySelector('[type=date]');
+      console.log(date);
+      var time = document.querySelector('[type=time]');
+      console.log(time);
+      
+      document.getElementById('timeSelect').addEventListener('change', function(){
+        console.log(date.value);
+        console.log(time.value);
+
+
+      })
+    </script>
+    -->
+    <div id="time-select">
+      <select id="year-select">
+      </select>
+        
+      <select id="month-select" >
+      </select>
+        
+      <select id="day-select" >
+      </select>
+      
+      <select id="hour-select" >
+      </select>
+      
+      <select id="minite-select" >
+      </select>
+      
+      <select id="second-select" >
+      </select>
+    </div>
+
+    <p id="result-wrapper">现在距离所选时间已经过去:  ☺ </p>
+
+    <script>
+     
+      var timeSelect = document.getElementById('time-select');
+      var yearSelect = document.getElementById('year-select');
+      var monthSelect = document.getElementById('month-select');
+      var daySelect = document.getElementById('day-select');
+      var hourSelect = document.getElementById('hour-select');
+      var minSelect = document.getElementById('minite-select');
+      var secSelect = document.getElementById('second-select');
+      var result  = document.getElementById('result-wrapper');
+
+
+      function generateFrag(start, end) {
+        var frag = document.createDocumentFragment(); // 只存在于内存块的节点
+        for (var i=start; i<=end; ++i) {
+        var optionNode = document.createElement('option');
+        optionNode.value = i;
+        optionNode.innerText = i;
+        frag.appendChild(optionNode);
+        }
+        return frag;
+      }
+      
+      
+      function generateOption(){
+        /*使用js 生成 选择框中的子项*/
+        // 生成年份
+        yearSelect.appendChild(generateFrag(2001, 2032)); 
+        // 生成月份
+        monthSelect.appendChild(generateFrag(1, 12));
+
+        // 根据年份和月份 ，生成天
+        // 1 3 5 7 8 10 12 月 31天 4 6  9 11 月 30天  闰年的2月 29天， 平年的2月28天
+        var year = yearSelect.value;
+          var month = monthSelect.value;
+          //console.log(typeof year, typeof month) // 得到的value 是 string 类型
+          if (month == 2 && (year%4 == 0 && year%100 != 0) || (year%400 == 0)) {
+            daySelect.innerHTML = ''; // 清空子节点 
+            daySelect.appendChild(generateFrag(1,29));
+          } else {
+            switch(month) {
+              case '1': case '3': case '5':  case '7': 
+              case '8': case '10': case '12': 
+                daySelect.innerHTML = ''; // 清空子节点 
+                daySelect.appendChild(generateFrag(1,31));
+                break;
+              case '4': case '6': case '9': case '11': 
+                daySelect.innerHTML = ''; // 清空子节点 
+                daySelect.appendChild(generateFrag(1,30));
+                break;
+            }
+          }
+        
+        // 生成小时 
+        hourSelect.appendChild(generateFrag(0,23));
+        // 生成分钟
+        minSelect.appendChild(generateFrag(0,59));
+        // 生成秒
+        secSelect.appendChild(generateFrag(0,59));
+      }
+      generateOption();
+
+
+      // 事件会冒泡，把select的change 冒泡到 其父级， 监听父级， 进行响应，
+      timeSelect.addEventListener('change', function(){
+        var nowTime = new Date()
+        console.log(nowTime);
+        // month 在 Date 中 只有 0 - 11 所以 减一 
+        var selectedTime = new Date(yearSelect.value, monthSelect.value-1, daySelect.value, hourSelect.value, minSelect.value, secSelect.value);
+        console.log(selectedTime);
+        
+
+
+        var diffTime =  nowTime - selectedTime>0 ? (nowTime - selectedTime)/1000 : (selectedTime-nowTime)/1000; 
+
+        console.log(diffTime, diffTime/1000);
+        var days = Math.floor(diffTime/24/3600);
+        var hours = Math.floor((diffTime - days*24*3600) / 3600 );
+        var mins = Math.floor((diffTime - days*24*3600 - hours*3600) / 60);
+        var secs = Math.floor((diffTime - days*24*3600 - hours*3600 - mins*60));
+        console.log(days, hours, mins, secs);
+        if (nowTime-selectedTime>0) {
+          result.innerText = '现在距离所选时间已经过去 ' + days+' 天'+hours+ ' 小时'+mins+' 分'+secs+' 秒';
+        } else {
+          result.innerText = '现在距离所选时间还有 ' + days+' 天'+hours+ ' 小时'+mins+' 分'+secs+' 秒';
+        }
+      })
+    </script>
+
+    
+  </div>
+</body>
+</html>
