@@ -52,7 +52,6 @@ body {
   font-size: 14px;
   line-height: 36px;
   position: relative;
-  font-family: ProximaNova-Semibold;
 }
 .sub-nav {
   /*宽度加左右padding 刚好 250px*/
@@ -178,7 +177,6 @@ body {
 /*第三栏 */
 #message {
   flex-grow: 1;
-  font-family: ProximaNova-Regular;
 }
 #header {
   border-bottom:  1px solid #e6e9ec;
@@ -275,7 +273,6 @@ body {
   margin-left: 9px;
 }
 #friends-list {
-  font-family: ProximaNova-Semibold;
   color: #86a5e6;
   float: left;
   width: 400px;
@@ -316,7 +313,6 @@ body {
   line-height: 19px;
   height: 38px;
   color: #585d68;
-  font-family: ProximaNova-Regular;
   margin-top: 14px;
   margin-bottom: 23px;
   padding-right: 45px;
@@ -361,7 +357,6 @@ body {
   margin: 25px 0;
   font-size: 14px;
   color: #585d68;
-  font-family: ProximaNova-Regular;
 }
 /*只有Tuesday New—Messages 、
 那我假定下面的是对应的内容*/
@@ -400,7 +395,6 @@ body {
   margin-bottom: 10px
 }
 .sub-status .user-name {
-  font-family: ProximaNova-Semibold;
   font-size: 16px;
 }
 .sub-status .time {
