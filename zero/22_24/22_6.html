@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>22_6</title>
+</head>
+<body>
+    <input id="stack-input" type="text">
+    <p id="stack-cont">栈内容：apple-&gt;pear</p>
+    <p id="message"></p>    
+    <button id="push-btn">进栈</button>
+    <button id="pop-btn">退栈</button>
+    <button id="font-btn">打印栈顶元素内容</button>
+    <button id="empty-btn">判断栈是否为空</button>
+    <button id='reverse-stack'>反转栈头(目前是 最右为栈头)</button>
+    <script>
+      var stack = ["apple", "pear"];
+      var stackInput = document.getElementById('stack-input');
+      var stackCont = document.getElementById('stack-cont');
+      var message = document.getElementById('message');
+
+      var pushBtn = document.getElementById('push-btn');
+      var popBtn = document.getElementById('pop-btn');
+      var fontBtn = document.getElementById('font-btn');
+      var emptyBtn = document.getElementById('empty-btn');
+      var reverseStack = document.getElementById('reverse-stack');
+
+      var flag = 'right' // right 代表最右边为栈头， left 代表 最左边;
+
+      reverseStack.addEventListener('click', function(){
+        if (flag == 'right') {
+          flag = 'left';
+          reverseStack.innerText = '反转栈头(目前是最左为栈头)';
+          stackCont.innerText = '栈列内容：' + stack.join('<-');
+        } else {
+          flag = 'right';
+          reverseStack.innerText = '反转栈头(目前是最右为栈头)';
+          stackCont.innerText = '栈列内容：' + stack.join('->');
+        }
+      });
+
+      pushBtn.addEventListener('click', function(){
+        var content = stackInput.value;
+        if (content == '') {
+          message.innerText = '请输入内容！ 好吗。'
+        } else {
+
+          flag == 'right' ? stack.unshift(content) : stack.push(content);
+          console.log(stack);
+          stackCont.innerText = '栈列内容：' + (flag == 'right' ? stack.join('->') : stack.join('<-'));
+          message.innerText = '';
+        }
+      });
+      popBtn.addEventListener('click', function(){
+        if(!stack.length) {
+          message.innerText = '哇，已经没有了';
+        } else {
+          flag == 'right' ? stack.shift() : stack.pop();
+          console.log(stack);
+          stackCont.innerText = '栈列内容：' + (flag == 'right' ? stack.join('->') : stack.join('<-'));
+          message.innerText = '';
+        }
+      });
+      fontBtn.addEventListener('click', function(){
+        if(!stack.length) {
+          message.innerText = '已经没有栈列啦';
+        } else {
+          stackCont.innerText = '对头元素是：' +  (flag == 'right' ? stack[stack.length-1]:stack[0]);
+        }
+      });
+      emptyBtn.addEventListener('click', function(){
+        if (!stack.length) {
+          stackCont.innerText = '栈列为空';
+        } else {
+          stackCont.innerText = '栈列不为空';
+        }
+      });
+
+    </script>
+
+  <script>
+    // 栈是先进后出。
+    
+  </script>
+ 
+</body>
+</html>

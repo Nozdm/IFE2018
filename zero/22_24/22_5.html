@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>22_5</title>
+</head>
+<body>
+    <input id="queue-input" type="text">
+    <p id="queue-cont">队列内容：apple-&gt;pear</p>    
+    <p id='error'></p>
+    <button id="in-btn">入队</button>
+    <button id="out-btn">出队</button>
+    <button id="font-btn">打印队头元素内容</button>
+    <button id="empty-btn">判断队列是否为空</button>
+    <button id='reverse-queue'>反转队头(目前是 最右为队头)</button>
+    <script>
+      // 队列是 先进先出
+      var queue = ["apple", "pear"];
+      var input = document.getElementById('queue-input');
+      var showContent = document.getElementById('queue-cont');
+      var error = document.getElementById('error');
+      var inBtn = document.getElementById('in-btn');
+      var outBtn = document.getElementById('out-btn');
+      var fontBtn = document.getElementById('font-btn');
+      var emptyBtn = document.getElementById('empty-btn');
+      var reverseQueue = document.getElementById('reverse-queue'); 
+      var flag = 'right' // right 代表最右边为队头， left 代表 最左边;
+
+      reverseQueue.addEventListener('click', function(){
+        if (flag == 'right') {
+          flag = 'left';
+          reverseQueue.innerText = '反转队头(目前是最左为队头)';
+          showContent.innerText = '队列内容：' + queue.join('<-');
+        } else {
+          flag = 'right';
+          reverseQueue.innerText = '反转队头(目前是最右为队头)';
+          showContent.innerText = '队列内容：' + queue.join('->');
+        }
+      })
+
+      inBtn.addEventListener('click', function(){
+        var content = input.value;
+        if (content == '') {
+          error.innerText = '请输入内容！ 好吗。'
+        } else {
+
+          flag == 'right' ? queue.unshift(content) : queue.push(content);
+          console.log(queue);
+          showContent.innerText = '队列内容：' + (flag == 'right' ? queue.join('->') : queue.join('<-'));
+          error.innerText = '';
+        }
+      });
+      outBtn.addEventListener('click', function(){
+        if(!queue.length) {
+          error.innerText = '哇，已经没有了';
+        } else {
+          flag == 'right' ? queue.pop() : queue.shift();
+          console.log(queue);
+          showContent.innerText = '队列内容：' + (flag == 'right' ? queue.join('->') : queue.join('<-'));
+          error.innerText = '';
+        }
+      });
+      fontBtn.addEventListener('click', function(){
+        if(!queue.length) {
+          error.innerText = '已经没有队列啦';
+        } else {
+          showContent.innerText = '对头元素是：' +  (flag == 'right' ? queue[queue.length-1]:queue[0]);
+        }
+      });
+      emptyBtn.addEventListener('click', function(){
+        if (!queue.length) {
+          showContent.innerText = '队列为空';
+        } else {
+          showContent.innerText = '队列不为空';
+        }
+      });
+    </script>
+</body>
+</html>

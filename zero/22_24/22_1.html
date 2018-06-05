@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>22_24</title>
+  <style>
+    .box {
+      margin: 10px;
+      padding: 10px;
+      border: 2px solid gray;
+    }
+  </style>
+</head>
+<body>
+  <!-- 编码一 --> 
+  <div class="box">
+    <div>
+      
+      <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+      <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+    </div>
+    <div id= 'btn'>
+      <button>判断当前选中的输入框输入内容是否为数字</button>
+      <button>把 A 四舍五入为 B 个小数位数的数字</button>
+      <button>当前选中数字的绝对值</button>
+      <button>对当前选中的数字进行上舍入</button>
+      <button>对当前选中的数字进行下舍入</button>
+      <button>把当前选中的数字四舍五入为最接近的整数</button>
+      <button>返回 A 和 B 中的最高值</button>
+      <button>返回 A 和 B 中的最低值</button>        
+    </div>
+    <p id="result"></p>
+  </div>
+  <script>
+    var radio_a = document.getElementById('radio-a');
+    var radio_b = document.getElementById('radio-b');
+    var num_a = document.getElementById('num-a');
+    var num_b = document.getElementById('num-b');
+    var btnAll = document.querySelectorAll('#btn button');
+    var result = document.getElementById('result');
+
+
+    function getRadioInput(){
+      // num.value 为 string类型
+      // parseFloat string转浮动数， 返回浮动数或NaN
+      if(radio_a.checked || radio_b.checked) {
+        if (radio_a.checked) {
+        return parseFloat(num_a.value);
+        }
+        else {
+          return parseFloat(num_b.value);
+        }
+      } else {
+        return  NaN;
+      }
+
+    }
+    function isNumber(value){
+      // 是number类型 返回 true
+      return ! (isNaN(value))
+    }
+    function showResult(text){
+      result.innerText = text;
+    }
+
+    // 因为每个button的功能不一样，所以单独绑定 
+    console.log(btnAll);
+    btnAll[0].addEventListener('click', function(){
+      
+      var radio_input = getRadioInput(); 
+      if (isNumber(radio_input)) {
+        showResult('这个数字是：' + radio_input);
+      } else {
+        showResult('这不是一个数字或未选中');
+      }
+    });
+    btnAll[1].addEventListener('click', function(){
+      // 把A四舍五入为B个的小数位数的数字。
+      var num_a_value = parseFloat(num_a.value);
+      var num_b_value = parseInt(num_b.value); // 位数都是整的
+
+      // 判断A B 是否都为数字
+      if (isNumber(num_a_value) && isNumber(num_b_value)) {
+        showResult('A四舍五入为B位数值为：'+ num_a_value.toFixed(num_b_value));
+      }
+      else {
+        showResult('存在不是数字的值，好好检查啊');
+      }
+
+
+    });
+    btnAll[2].addEventListener('click', function(){
+      var radio_input = getRadioInput(); 
+      if (isNumber(radio_input)) {
+        showResult('这个数字的绝对值是：' + Math.abs(radio_input));
+      } else {
+        showResult('这不是一个数字或未选中');
+      }
+    });
+    btnAll[3].addEventListener('click', function(){
+      var radio_input = getRadioInput(); 
+      if (isNumber(radio_input)) {
+        showResult('这个数字的上舍入值是：' + Math.ceil(radio_input));
+      } else {
+        showResult('这不是一个数字或未选中');
+      }
+    });
+    btnAll[4].addEventListener('click', function(){
+      var radio_input = getRadioInput(); 
+      if (isNumber(radio_input)) {
+        showResult('这个数字的下舍入值是：' + Math.floor(radio_input));
+      } else {
+        showResult('这不是一个数字或未选中');
+      }
+    });
+    btnAll[5].addEventListener('click', function(){
+      var radio_input = getRadioInput(); 
+      if (isNumber(radio_input)) {
+        showResult('这个数字的四舍五入为最接近的整数为：' + Math.round(radio_input));
+      } else {
+        showResult('这不是一个数字或未选中');
+      }
+    });
+    btnAll[6].addEventListener('click', function(){
+      var num_a_value = parseFloat(num_a.value);
+      var num_b_value = parseFloat(num_b.value);
+
+      // 判断A和B的值是否都是数字 
+      if (isNumber(num_a_value) && isNumber(num_b_value)) {
+        showResult( 'A、B中最大值为'+Math.max(num_a_value, num_b_value) );
+      }
+      else {
+        showResult('存在不是数字的值哦，好好检查啊');
+      }
+    });
+    btnAll[7].addEventListener('click', function(){
+      var num_a_value = parseFloat(num_a.value);
+      var num_b_value = parseFloat(num_b.value);
+      if (isNumber(num_a_value) && isNumber(num_b_value)) {
+        showResult('A、B中最小值为'+Math.min(num_a_value, num_b_value) );
+      }
+      else {
+        showResult('存在不是数字的值，好好检查啊');
+      }
+    });
+  </script>
+</body>
+</html>

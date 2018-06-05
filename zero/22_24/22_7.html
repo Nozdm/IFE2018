@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>22_7</title>
+</head>
+<body>
+  <p>打开console控制台查看</p>
+  <script>
+    var arr = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+    // 从小大 排序a-b
+    arr.sort(function(a,b){
+      return a-b;  // a-b  如果值大于0 代表他们要换位置
+    });
+    console.log(arr);
+    // 从大到小 排序b-a
+    arr.sort(function(a,b){
+      return b-a; // b-a 如果值大于0 则表示 他们要换位置
+    });
+    console.log(arr);
+    var arr = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+    // 从a到z排序
+    arr.sort(function(a,b){
+      return a>b;
+    });
+    console.log(arr);
+    // 从z到a排序
+    arr.sort(function(a,b){
+      return a<b;
+    });
+    console.log(arr);
+    
+    var arr = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+    // 按每个元素的第二个数从大到小排序
+    arr.sort(function(a,b){
+      return b[1]-a[1];
+    });
+    console.log(arr);
+
+    var arr = [{
+      id: 1,
+      name: 'candy',
+      value: 40
+      }, {
+      id: 2,
+      name: 'Simon',
+      value: 50
+      }, {
+      id: 3,
+      name: 'Tony',
+      value: 45
+      }, {
+      id: 4,
+      name: 'Annie',
+      value: 60
+      }
+    ];
+    // 按元素对象的value值 从小到大 排序
+    arr.sort(function(a,b){
+      return (a.value - b.value);
+    });
+    console.log(arr);
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>22_3</title>
+</head>
+<body>
+  <p>打开console控制台（F12）</p>
+  <button>字符串头尾去除（全）半角空格</button>
+  <button>去掉字符串连续重复的地方</button>
+    <script>
+      var btnAll = document.getElementsByTagName('button');
+      btnAll[0].addEventListener('click', function(){
+        console.log('实现一个字符串头尾去除空格的函数');
+        /*
+        实现一个字符串头尾去除空格的函数
+        注意需要去除的空格，包括全角、半角空格
+        暂时不需要学习和使用正则表达式的方式
+        */
+        function diyTrim(str) {
+          if (!str) return '';
+          var result = "";
+          var beginIndex = null;
+          var endIndex = 1;
+          // do something
+          for(var i=0; i<str.length; ++i) {
+            // 半角的Uncode 是 32 全角空格是 12288
+            if (str[i] && str.charCodeAt(i) !== 32 && str.charCodeAt(i) !== 12288)  {
+              beginIndex = i;
+              break;
+            }
+          }
+            if (beginIndex == null) return '';
+            for(var j=str.length-1; j>=0;j--) {
+              if (str[j] && str.charCodeAt(j) !== 32 && str.charCodeAt(j) !== 12288)  {
+                endIndex = j;
+                break;
+              }
+            }
+            result = str.slice(beginIndex, endIndex+1);
+            return result;
+          }
+
+        // 测试用例
+        console.log(diyTrim(' a f b    ')); // ->a f b
+        console.log(diyTrim('    ffdaf    ')); // ->ffdaf
+        console.log(diyTrim('1    ')); // ->1
+        console.log(diyTrim('　　f')); // ->f
+        console.log(diyTrim('  　  a f b 　　 ')); // ->a f b
+        console.log(diyTrim(' ')); // ->
+        console.log(diyTrim('　')); // ->
+        console.log(diyTrim('')); // ->
+      })
+      btnAll[1].addEventListener('click', function(){
+        /*
+        去掉字符串str中，连续重复的地方
+        */
+        console.log('去掉字符串str中，连续重复的地方');
+      function removeRepetition(str) {
+        if (str.length == 0 ) return ""; // 之间返回空字符串
+
+        var result = "";
+        var newChar = str[0];
+        var newStr = [];
+        newStr.push(newChar);
+        for (var i=0; i<str.length; ++i) {
+          if (newChar != str[i]) {
+            newChar = str[i];
+            newStr.push(newChar);
+          }
+        }
+        result = newStr.join("");
+        // do something
+        return result;
+      }
+      // 测试用例
+      console.log(removeRepetition("aaa ")); // ->a
+      console.log(removeRepetition("abbba")); // ->aba
+      console.log(removeRepetition("aabbaabb")); // ->abab
+      console.log(removeRepetition("")); // ->
+      console.log(removeRepetition("abc")); // ->abc
+      })
+    </script>
+</body>
+</html>
