@@ -10,6 +10,9 @@
     .wrapper {
       position: relative;
     }
+    p {
+      user-select: none;
+    }
     #email-input {
       box-sizing: border-box;
       padding-left: 10px;
@@ -43,32 +46,15 @@
 </head>
 <body>
   <div class="wrapper">
+      <p>请输入你的邮箱哦</p>
     <input id="email-input" type="text">
     <ul id="email-sug-wrapper" class="email-sug"></ul>
     <p> 假设下面有文字</p>
   </div>
-  <p>请输入你的邮箱哦</p>
+
   <script>
     var emailInput = document.getElementById('email-input');
     var emailWrapper = document.getElementById('email-sug-wrapper');
-    //console.log(emailWrapper);
-    /*
-    // esc 只有 keypress 和 oninput 不响应， 拓展到 shift ctrl 等按键  
-    // enter 只有 oninput 不响应
-    // keydown 和 keypress 不会及时响应， 获取的是上一次的值
-    emailInput.addEventListener('keyup', function(){
-      console.log('keyup ' +  emailInput.value);
-    });
-    emailInput.addEventListener('keypress', function(){
-      console.log('keypress '+ emailInput.value);
-    });
-    emailInput.addEventListener('keydown', function(){
-      console.log('keydown ' + emailInput.value);
-    });
-    emailInput.addEventListener('input', function(){
-      console.log('oninput ' + emailInput.value);
-    });
-    */
     function getInput(str) {
       // trim 后返回 前后空格清除
       return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');   
@@ -169,11 +155,11 @@
     })
     // 监听 input 的输入事件 ， 对生成的节点进行操作, 因为 focus在input上
     emailInput.addEventListener('keyup', function(e){ 
-      console.log(e.keyCode);
+      //console.log(e.keyCode);
       var liAllNode = document.querySelectorAll('#email-sug-wrapper li');
       var length = liAllNode.length;
       if (e.keyCode == 38) {
-        console.log('上')
+        //console.log('上')
         index = (length + --index)%length;
         for (var i=0; i<liAllNode.length; ++i) {
         liAllNode[i].classList='';
@@ -181,7 +167,7 @@
         liAllNode[index].classList.add('keyActive');
 
       } else if (e.keyCode == 40) {
-        console.log('下')
+        //console.log('下')
         index = (++index)%length;
         for (var i=0; i<liAllNode.length; ++i) {
         liAllNode[i].classList='';
@@ -190,7 +176,7 @@
       } else if (e.keyCode == 13) {
         emailInput.value = liAllNode[index].innerText;
         hidePromptBox();
-        console.log('回车');
+        //console.log('回车');
       }else if(e.keyCode == 27) {
         emailInput.select();
       }else {
