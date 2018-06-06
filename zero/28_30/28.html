@@ -9,6 +9,13 @@
 
     .wrapper {
       position: relative;
+      font-size: 20px;
+    }
+    input {
+      width: 300px;
+      height: 40px;
+      font-size: 20px;
+      border: 2px solid blue;
     }
     p {
       user-select: none;
@@ -18,6 +25,7 @@
       padding-left: 10px;
     }
     .email-sug {
+      overflow: hidden;
       box-sizing: border-box;
       position: absolute;
       list-style-type: none;
@@ -28,9 +36,9 @@
       margin: 0px;
       padding: 0;
       border: 2px solid blue;
+      border-top: none;
       display: none;
       cursor: pointer;
-
       user-select: none;
     }
     .email-sug li {
@@ -46,10 +54,10 @@
 </head>
 <body>
   <div class="wrapper">
-      <p>请输入你的邮箱哦</p>
-    <input id="email-input" type="text">
+      <p>请输入邮箱哦</p>
+    <input id="email-input" type="text" autocomplete="off">
     <ul id="email-sug-wrapper" class="email-sug"></ul>
-    <p> 假设下面有文字</p>
+    <p> 假装下面有文字</p>
   </div>
 
   <script>
@@ -105,7 +113,7 @@
       emailWrapper.style.display = 'none';
     };
     function showProptBox(){
-      emailWrapper.style.minWidth = getComputedStyle(emailInput).getPropertyValue('width');
+      emailWrapper.style.width = getComputedStyle(emailInput).getPropertyValue('width');
       emailWrapper.style.display = 'block';
     };
     // 监听input事件
