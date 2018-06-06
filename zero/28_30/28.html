@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>28</title>
+  <style>
+
+    .wrapper {
+      position: relative;
+    }
+    #email-input {
+      box-sizing: border-box;
+      padding-left: 10px;
+    }
+    .email-sug {
+      box-sizing: border-box;
+      position: absolute;
+      list-style-type: none;
+      /*加入下面有文字， 白色的背景色是为了覆盖*/
+      background: white;
+      background-clip:  border-box;
+      /*取消列表默认缩进效果*/
+      margin: 0px;
+      padding: 0;
+      border: 2px solid blue;
+      display: none;
+      cursor: pointer;
+
+      user-select: none;
+    }
+    .email-sug li {
+      padding: 2px 10px;
+    }
+    .email-sug li.mouseActive {
+      background: rgb(192, 221, 237);
+    }
+    .email-sug li.keyActive {
+      background: rgb(212, 181, 185);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <input id="email-input" type="text">
+    <ul id="email-sug-wrapper" class="email-sug"></ul>
+    <p> 假设下面有文字</p>
+  </div>
+  <p>请输入你的邮箱哦</p>
+  <script>
+    var emailInput = document.getElementById('email-input');
+    var emailWrapper = document.getElementById('email-sug-wrapper');
+    //console.log(emailWrapper);
+    /*
+    // esc 只有 keypress 和 oninput 不响应， 拓展到 shift ctrl 等按键  
+    // enter 只有 oninput 不响应
+    // keydown 和 keypress 不会及时响应， 获取的是上一次的值
+    emailInput.addEventListener('keyup', function(){
+      console.log('keyup ' +  emailInput.value);
+    });
+    emailInput.addEventListener('keypress', function(){
+      console.log('keypress '+ emailInput.value);
+    });
+    emailInput.addEventListener('keydown', function(){
+      console.log('keydown ' + emailInput.value);
+    });
+    emailInput.addEventListener('input', function(){
+      console.log('oninput ' + emailInput.value);
+    });
+    */
+    function getInput(str) {
+      // trim 后返回 前后空格清除
+      return str.replace(/^\s\s*/, '').replace(/\s\s*$/, '');   
+    };
+    function generateHintContent(emailPrefix) {
+      var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+      var frag = document.createDocumentFragment();
+
+      /* 要对 emailprefix 进行分析
+       1. 不含@字符 , 进行拼接补全
+       2. 包含@字符， 进行拼接补全
+       3. @字符之后，还有字符，进一步的补全
+      */
+      var index = emailPrefix.indexOf('@');
+      var x, y;
+      if (index != -1) {
+         x = emailPrefix.slice(0,index); // @前半部分
+         y = emailPrefix.slice(index+1); // @后半部分， 如果没有，就是空字符串
+      }else {
+        x = emailPrefix;
+        y = ''; // 空字符串
+      }
+      //console.log(y);
+      var postfixListFiltrate = []; // 根据@后半部分，进行邮箱后缀匹配
+      if (x!= '' && y != ''){
+        var reg = new RegExp(y);
+        postfixList.map(function(item){
+         if (reg.test(item)) {
+           postfixListFiltrate.push(item);
+         }
+        });
+      }
+      // 如果 匹配到的后缀数为零，或者压根不进行匹配，显示所有后缀
+      postfixListFiltrate = (postfixListFiltrate.length==0&&x!='' ||y==''? postfixList: postfixListFiltrate);
+      for (var i=0; i<postfixListFiltrate.length&&x!=''; ++i) {
+        var liNode = document.createElement('li');
+        liNode.innerText = x + '@' + postfixListFiltrate[i];
+        frag.appendChild(liNode)
+      }
+      return frag;
+    };
+    function appendToEmailWrapper(frag){
+      // 先清除之前的 子节点
+      emailWrapper.innerHTML = '';
+      emailWrapper.appendChild(frag);
+    };
+    function hidePromptBox(){
+      emailWrapper.style.display = 'none';
+    };
+    function showProptBox(){
+      emailWrapper.style.minWidth = getComputedStyle(emailInput).getPropertyValue('width');
+      emailWrapper.style.display = 'block';
+    };
+    // 监听input事件
+    emailInput.addEventListener('input',function(){
+    var emailPrefix = getInput(emailInput.value);
+    //console.log(emailPrefix);
+    if (emailPrefix == '') {
+      var frag =  generateHintContent(emailPrefix);
+      appendToEmailWrapper(frag);
+      hidePromptBox();
+    }else {
+      var frag =  generateHintContent(emailPrefix);
+      appendToEmailWrapper(frag);
+      showProptBox();
+    };
+    });
+    var index = 0;
+
+    // 事件代理 给父级
+    emailWrapper.addEventListener('mouseover', function(e){
+      //console.log(e.target.nodeName);
+      // 因为还有可能点到父级标签，虽然是很小的一点点
+      if (e.target.nodeName == 'LI') {
+      // 先把所有的元素去除mouseActive类， 不管有没有
+      // querySelector 返回的是NodeList不是动态集合，无法节点变化无法事实返回结果
+      var liAllNode = document.querySelectorAll('#email-sug-wrapper li'); 
+      for (var i=0; i<liAllNode.length; ++i) {
+        liAllNode[i].classList='';
+      }
+      //console.log(liAllNode);
+      // 为当前元素添加 mouseActive
+      e.target.classList.add('mouseActive');
+
+      // 获取 该元素 属于 父元素的第几个元素 ， 赋值给 index 这样可以直接由键盘事件接管
+      liAllNode =  document.querySelectorAll('#email-sug-wrapper li'); 
+      for (var i=0; i<liAllNode.length; ++i) {
+        if (e.target === liAllNode[i]) index = i;
+      }
+      
+    }
+    
+    })
+    emailWrapper.addEventListener('click', function(e){
+      emailInput.value = e.target.innerText;
+      emailInput.focus();
+      hidePromptBox();
+    })
+    // 监听 input 的输入事件 ， 对生成的节点进行操作, 因为 focus在input上
+    emailInput.addEventListener('keyup', function(e){ 
+      console.log(e.keyCode);
+      var liAllNode = document.querySelectorAll('#email-sug-wrapper li');
+      var length = liAllNode.length;
+      if (e.keyCode == 38) {
+        console.log('上')
+        index = (length + --index)%length;
+        for (var i=0; i<liAllNode.length; ++i) {
+        liAllNode[i].classList='';
+        }
+        liAllNode[index].classList.add('keyActive');
+
+      } else if (e.keyCode == 40) {
+        console.log('下')
+        index = (++index)%length;
+        for (var i=0; i<liAllNode.length; ++i) {
+        liAllNode[i].classList='';
+        }
+        liAllNode[index].classList.add('keyActive');
+      } else if (e.keyCode == 13) {
+        emailInput.value = liAllNode[index].innerText;
+        hidePromptBox();
+        console.log('回车');
+      }else if(e.keyCode == 27) {
+        emailInput.select();
+      }else {
+        //为第一个默认添加 
+        if (length != 0) 
+          liAllNode[0].classList.add('keyActive'); 
+      }
+    })
+    
+    window.onload = function() {
+      emailInput.focus();
+    }
+  </script>
+</body>
+</html>
