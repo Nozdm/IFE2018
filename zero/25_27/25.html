@@ -121,30 +121,8 @@
       loopShowTime();
     </script>
   </div>
+   <!-- 编码三 -->
   <div class="box">
-    <!-- 
-    <p>编码三： 直接使用了html5的时间控件</p>
-    <div id="timeSelect">
-        <input type="date" value="2001-01-01"/>
-        <input type="time" value="00:00:00"/>
-    </div>
-
-    <p id="result-wrapper">嘿嘿嘿</p>
-
-    <script>
-      var date = document.querySelector('[type=date]');
-      console.log(date);
-      var time = document.querySelector('[type=time]');
-      console.log(time);
-      
-      document.getElementById('timeSelect').addEventListener('change', function(){
-        console.log(date.value);
-        console.log(time.value);
-
-
-      })
-    </script>
-    -->
     <div id="time-select">
       <select id="year-select">
       </select>
@@ -164,11 +142,8 @@
       <select id="second-select" >
       </select>
     </div>
-
     <p id="result-wrapper">现在距离所选时间已经过去:  ☺ </p>
-
-    <script>
-     
+    <script>  
       var timeSelect = document.getElementById('time-select');
       var yearSelect = document.getElementById('year-select');
       var monthSelect = document.getElementById('month-select');
@@ -177,7 +152,6 @@
       var minSelect = document.getElementById('minite-select');
       var secSelect = document.getElementById('second-select');
       var result  = document.getElementById('result-wrapper');
-
 
       function generateFrag(start, end) {
         var frag = document.createDocumentFragment(); // 只存在于内存块的节点
@@ -189,7 +163,6 @@
         }
         return frag;
       }
-      
       
       function generateOption(){
         /*使用js 生成 选择框中的子项*/
@@ -232,14 +205,19 @@
 
       // 事件会冒泡，把select的change 冒泡到 其父级， 监听父级， 进行响应，
       timeSelect.addEventListener('change', function(){
-        var nowTime = new Date()
-        console.log(nowTime);
-        // month 在 Date 中 只有 0 - 11 所以 减一 
+        showDiffTime();
+      })
+      function loopShowDiffTime(){
+        showDiffTime();
+        setTimeout(loopShowDiffTime,1000);
+      }
+      loopShowDiffTime();
+      function showDiffTime(){
+        var nowTime = new Date();
+        //console.log(nowTime);
+        // month 在 Date 中 只有 0 - 11 而设置的值为1-12 
         var selectedTime = new Date(yearSelect.value, monthSelect.value-1, daySelect.value, hourSelect.value, minSelect.value, secSelect.value);
         console.log(selectedTime);
-        
-
-
         var diffTime =  nowTime - selectedTime>0 ? (nowTime - selectedTime)/1000 : (selectedTime-nowTime)/1000; 
 
         console.log(diffTime, diffTime/1000);
@@ -253,7 +231,7 @@
         } else {
           result.innerText = '现在距离所选时间还有 ' + days+' 天'+hours+ ' 小时'+mins+' 分'+secs+' 秒';
         }
-      })
+      }
     </script>
 
     
