@@ -37,7 +37,7 @@
       background: blue;
       transition: transform 2s;
      }
-     .main:hover p {
+     .main:hover > p {
         color: blue;
      }
      .main:hover span {
@@ -54,28 +54,51 @@
   </style>
 </head>
 <body>
+  <h4>样式改变后，需要手动进行切换</h4>
+  <div class="layout">
+      <div class="main">
+          <p>前端学院
+            <span></span>
+          </p> 
+      </div>
+  
+      <button>切换样式</button>
+    </div>
+  <h4>在样式改变后，自动返回原来的样式</h4>
   <div class="layout">
     <div class="main">
         <p>前端学院
           <span></span>
         </p> 
     </div>
-
     <button>切换样式</button>
   </div>
   <script>
-    var button = document.querySelector('button');
-    var p = document.querySelector('p');
-    var span = document.querySelector('span');
+    var button = document.querySelectorAll('button');
+    var p = document.querySelectorAll('p');
+    var span = document.querySelectorAll('span');
 
-    button.addEventListener('click', function(){
-      p.style.color = 'blue';
-      span.style.transform = 'scale(1)';
+    var flag = true;
+    button[0].addEventListener('click', function(){
+      if (flag){
+        // 添加变化
+        p[0].style.color = 'blue';
+        span[0].style.transform = 'scale(1)';
+        flag = false;
+      } else {
+        p[0].style.color = 'black';
+        span[0].style.transform = 'scale(0)';
+        flag = true;
+      }
     })
-    
-    p.addEventListener('transitionend', function(){
-      p.style.color = 'black';
-      span.style.transform = 'scale(0)';
+
+    button[1].addEventListener('click', function(){
+      p[1].style.color = 'blue';
+      span[1].style.transform = 'scale(1)';
+    })
+    p[1].addEventListener('transitionend', function(){
+      p[1].style.color = 'black';
+      span[1].style.transform = 'scale(0)';
     })
   </script>
 </body>
