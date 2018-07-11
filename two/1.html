@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3_1</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+     .layout {
+       width: 200px;
+       margin: 20px auto;
+       font-size: 1.5rem;
+       text-align: center;
+     }
+     .main {
+       cursor: pointer;
+     }
+     p {
+      display: inline-block;
+      font-weight: normal;
+      margin-bottom: 20px ;
+      position: relative;
+      transition: color 2s;
+     }
+     .main span {
+       position: absolute;
+       left: 0;
+       bottom: 0px;
+       width: 100%;
+       transform: scale(0);
+       height: 2px;
+      background: blue;
+      transition: transform 2s;
+     }
+     .main:hover p {
+        color: blue;
+     }
+     .main:hover span {
+       transform: scale(1);
+     }
+     button {
+       color: black;
+       padding: 10px;
+       border: 2px solid black;
+       outline: none;
+       background: none;
+      border-radius: 10px;
+     }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="main">
+        <p>前端学院
+          <span></span>
+        </p> 
+    </div>
+
+    <button>切换样式</button>
+  </div>
+  <script>
+    var button = document.querySelector('button');
+    var p = document.querySelector('p');
+    var span = document.querySelector('span');
+
+    button.addEventListener('click', function(){
+      p.style.color = 'blue';
+      span.style.transform = 'scale(1)';
+    })
+    
+    p.addEventListener('transitionend', function(){
+      p.style.color = 'black';
+      span.style.transform = 'scale(0)';
+    })
+  </script>
+</body>
+</html>
