@@ -103,16 +103,17 @@
   <script>
     var footer = document.querySelector('.footer');
     var main = document.querySelector('.main');
-    var now = null;
+     // var now = null;在写代码的时候，方便在控制台调试
     footer.addEventListener('click',function(e){
+      //console.log(e.target.nodeName)  当前元素节点名
       if (e.target.nodeName == 'SPAN') {
         var img = e.target.querySelector('img');
-        now = img;
+        // now = img;
         var imgSrc =img.getAttribute('src');
-        var index = img.dataset.index;
-        var time = img.dataset.animationTime;
-        main.style.backgroundImage = "url(" + imgSrc + ")";
-        main.style.animation =`${index} ${time} 1 alternate forwards`; //es6的模版语法
+        var index = img.dataset.index; // dataset 是一个包含data- 自定义属性的对象
+        var time = img.dataset.animationTime; 
+        main.style.backgroundImage = `url(${imgSrc})`; //es6的模版语法
+        main.style.animation =`${index} ${time} 1 alternate forwards`;
       }
     })
   </script>
