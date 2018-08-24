@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>bar</title>
+  <style>
+     svg {
+      stroke: #000;
+      stroke-width: 1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+     }
+
+     .rect {
+      fill: #dd524b;
+      stroke: #70d5dd; 
+     }
+  </style>
+</head>
+<body>
+    <svg id="svg" xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet">
+    <line x1="0" y1="300" x2="600" y2="300" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+    <line x1="0" y1="0" x2="0" y2="300" style="stroke:rgb(0,0,0);stroke-width:2" ></line>
+    
+    </svg>
+    <script>
+      var data = {
+        product: "手机",
+        region: "华东",
+        sale: [120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270]
+      };
+      var mo
+      var svg = document.querySelector('svg');
+      var svgWidth = parseFloat(svg.getAttribute('width'));
+      var svgHeight = parseFloat(svg.getAttribute('height'));
+      var maxData = Math.max.apply(null, data.sale); // 找出最大的值
+      var dataNum = data.sale.length; // 数据的长度
+      var x = 10, 
+          y=0,
+          width = 40,
+          height = null;
+
+      var frg = document.createDocumentFragment();
+      for (var i=0; i<dataNum; ++i) {
+        var rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+
+        rect.setAttribute('x', x);
+        rect.setAttribute('y', svgHeight*(1- data.sale[i]/maxData));
+        rect.setAttribute('width', width);
+        rect.setAttribute('height',  svgHeight*data.sale[i]/maxData - 2);
+        rect.classList.add('rect');
+        x += 50;
+
+        frg.appendChild(rect);
+      }
+      svg.appendChild(frg);
+
+    </script>
+
+</body>
+</html>
+
